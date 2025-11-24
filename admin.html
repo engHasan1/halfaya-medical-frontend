@@ -1,0 +1,234 @@
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم الأدمن - دليل حلفايا الطبي</title>
+    <link rel="icon" type="image/svg+xml" href="assets/img/اللوغو بخلفية شفافة (1).svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2D89EF">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="حلفايا الطبي">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RWY9L45TF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8RWY9L45TF');
+    </script>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="header-logo">
+            <div class="logo-link" style="cursor: default; pointer-events: none;">
+                <img src="assets/img/اللوغو بخلفية شفافة (1).svg" alt="دليل حلفايا الطبي" class="logo-image">
+                <span>دليل حلفايا الطبي - لوحة تحكم الأدمن</span>
+            </div>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="admin.html" class="nav-link">لوحة التحكم</a></li>
+                <li class="nav-item"><a href="admin-management.html" class="nav-link">إدارة الأطباء والصيادلة</a></li>
+                <li class="nav-item"><a href="#" id="logout-link" class="nav-link">تسجيل الخروج</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">لوحة تحكم الأدمن</h1>
+            
+            <!-- Notification Message (hidden by default) -->
+            <div id="notification-message" class="notification-message" style="display: none;">
+                <p id="notification-text"></p>
+            </div>
+            
+            <!-- Add New Item Section -->
+            <section class="admin-section">
+                <h2 class="section-title">إضافة جديد</h2>
+                <div class="admin-add-form-container">
+                    <form id="admin-add-form" class="add-form">
+                        <div class="form-group">
+                            <label for="admin-user-type">النوع</label>
+                            <select id="admin-user-type" name="userType" class="form-input" required>
+                                <option value="">اختر النوع</option>
+                                <option value="doctor">طبيب</option>
+                                <option value="pharmacist">صيدلي</option>
+                                <option value="pharmacy">صيدلية</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="admin-full-name">الاسم الكامل</label>
+                            <input type="text" id="admin-full-name" name="fullName" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="admin-phone">رقم الهاتف</label>
+                            <input type="tel" id="admin-phone" name="phone" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group" id="admin-gender-group" style="display: none;">
+                            <label for="admin-gender">الجنس</label>
+                            <select id="admin-gender" name="gender" class="form-input" required>
+                                <option value="">اختر الجنس</option>
+                                <option value="ذكر">ذكر</option>
+                                <option value="أنثى">أنثى</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group" id="admin-specialty-group" style="display: none;">
+                            <label for="admin-specialty">الاختصاص</label>
+                            <input type="text" id="admin-specialty" name="specialty" class="form-input" list="admin-specialty-list" placeholder="اختر من القائمة أو اكتب التخصص">
+                            <datalist id="admin-specialty-list">
+                                <option value="أطفال">أطفال</option>
+                                <option value="نسائية">نسائية</option>
+                                <option value="عظمية">عظمية</option>
+                                <option value="قلبية">قلبية</option>
+                                <option value="داخلية">داخلية</option>
+                                <option value="عصبية">عصبية</option>
+                                <option value="عينية">عينية</option>
+                                <option value="أنف أذن حنجرة">أنف أذن حنجرة</option>
+                                <option value="طب طوارئ">طب طوارئ</option>
+                                <option value="أشعة">أشعة</option>
+                                <option value="أسنان">أسنان</option>
+                            </datalist>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="admin-location">الموقع (اختياري)</label>
+                            <input type="text" id="admin-location" name="location" class="form-input">
+                        </div>
+                        
+                        <button type="submit" class="submit-button">إضافة</button>
+                    </form>
+                </div>
+            </section>
+            
+            <!-- Pending Submissions Section -->
+            <section class="admin-section">
+                <h2 class="section-title">طلبات الإضافة المعلقة</h2>
+                <div id="pending-submissions-container" class="admin-cards-container">
+                    <!-- Pending submissions will be loaded here -->
+                </div>
+            </section>
+            
+            <!-- On-Duty Pharmacy Management Section -->
+            <section class="admin-section">
+                <div class="admin-on-duty-card">
+                    <h3 class="admin-section-title">💊 إدارة صيدلية المناوبة</h3>
+                    <div id="on-duty-management-container">
+                        <!-- On-duty pharmacy management will be loaded here -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Check if admin is logged in
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Check authentication
+            const token = getAuthToken();
+            if (!token) {
+                window.location.href = "admin-login.html";
+                return;
+            }
+            
+            const admin = await checkAuth();
+            if (!admin) {
+                removeAuthToken();
+                window.location.href = "admin-login.html";
+                return;
+            }
+            
+            // Add logout functionality
+            const logoutLink = document.getElementById('logout-link');
+            if (logoutLink) {
+                logoutLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    removeAuthToken();
+                    window.location.href = "admin-login.html";
+                });
+            }
+            
+            // Load admin panel content (pending submissions and on-duty management only)
+            await loadAdminPanel();
+            
+            // Initialize admin add form
+            initializeAdminAddForm();
+        });
+        
+        // Initialize admin add form
+        function initializeAdminAddForm() {
+            const form = document.getElementById('admin-add-form');
+            const userTypeSelect = document.getElementById('admin-user-type');
+            const genderGroup = document.getElementById('admin-gender-group');
+            const genderSelect = document.getElementById('admin-gender');
+            const specialtyGroup = document.getElementById('admin-specialty-group');
+            const specialtySelect = document.getElementById('admin-specialty');
+            
+            // Handle user type change
+            if (userTypeSelect) {
+                userTypeSelect.addEventListener('change', function() {
+                    if (this.value === 'doctor' || this.value === 'pharmacist') {
+                        genderGroup.style.display = 'block';
+                        genderSelect.setAttribute('required', 'required');
+                    } else {
+                        genderGroup.style.display = 'none';
+                        genderSelect.removeAttribute('required');
+                        genderSelect.value = '';
+                    }
+                    
+                    if (this.value === 'doctor') {
+                        specialtyGroup.style.display = 'block';
+                        specialtySelect.setAttribute('required', 'required');
+                    } else {
+                        specialtyGroup.style.display = 'none';
+                        specialtySelect.removeAttribute('required');
+                        specialtySelect.value = '';
+                    }
+                });
+            }
+            
+            // Add submit event listener
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    submitAdminForm();
+                });
+            }
+        }
+    </script>
+    
+    <!-- Modal for editing -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close-btn">&times;</span>
+        <h3 id="modalTitle"></h3>
+        <form id="modalForm"></form>
+      </div>
+    </div>
+    
+    <footer class="main-footer">
+        <!-- Footer will be loaded by footer.js -->
+    </footer>
+    
+    <script src="assets/js/footer.js"></script>
+    <script src="assets/js/install-prompt.js"></script>
+</body>
+</html>

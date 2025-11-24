@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصيدليات المناوبة - دليل حلفايا الطبي</title>
+    <link rel="icon" type="image/svg+xml" href="assets/img/اللوغو بخلفية شفافة (1).svg">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2D89EF">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="حلفايا الطبي">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8RWY9L45TF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-8RWY9L45TF');
+    </script>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header class="header">
+        <div class="header-logo">
+            <a href="index.html" class="logo-link">
+                <img src="assets/img/اللوغو بخلفية شفافة (1).svg" alt="دليل حلفايا الطبي" class="logo-image">
+                <span>دليل حلفايا الطبي</span>
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">الرئيسية</a></li>
+                <li class="nav-item"><a href="categories.html" class="nav-link">التصنيفات</a></li>
+                <li class="nav-item"><a href="doctors.html" class="nav-link">جميع الأطباء والصيادلة</a></li>
+                <li class="nav-item"><a href="on-duty.html" class="nav-link">صيدليات المناوبة</a></li>
+                <li class="nav-item"><a href="add.html" class="nav-link">إضافة طبيب/صيدلي</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title">صيدليات المناوبة اليوم</h1>
+            
+            <!-- Container for all on-duty pharmacies -->
+            <div id="on-duty-pharmacies-container" class="on-duty-pharmacies-grid">
+                <!-- Pharmacies will be loaded here dynamically -->
+                <div class="on-duty-main-card">
+                    <div class="pharmacy-icon">💊</div>
+                    <h2 class="pharmacy-title">جارٍ التحميل...</h2>
+                </div>
+            </div>
+            
+            <!-- On-Duty Note -->
+            <div class="on-duty-note">
+                <p>🔔 تنويه مهم: يتم تحديث معلومات صيدليات المناوبة يدويًا عبر لوحة الإدارة. في حال وجود أي خطأ بالبيانات، يُرجى التواصل معنا.</p>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="main-footer">
+        <!-- Footer will be loaded by footer.js -->
+    </footer>
+    
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/footer.js"></script>
+    <script src="assets/js/install-prompt.js"></script>
+    <script>
+        // Initialize the page when DOM is loaded
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Load current on-duty pharmacy information from API
+            await loadOnDutyPharmacy();
+        });
+    </script>
+</body>
+</html>
